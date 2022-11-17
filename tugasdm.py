@@ -14,7 +14,7 @@ from sklearn.svm import SVC
 
 st.title("APLIKASI WEB DATA MINING")
 st.write("Nama : Firdatul Fitriyah | Nim : 200411100020")
-import_data, preporcessing, modeling, implementation = st.tabs(["Import Data", "Prepocessing", "Modeling", "Implementation"])
+import_data, preporcessing, modeling, evalution, implementation = st.tabs(["Import Data", "Prepocessing", "Modeling", "evalution","Implementation"])
 
 with import_data:
     st.write("""# Import Data""")
