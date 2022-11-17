@@ -28,7 +28,7 @@ with preporcessing:
     st.write("""# Preprocessing""")
     data.head()
     # create a dataframe with all training data except the target column
-    X = data.drop(columns=["risk_rating"])
+    X = data.drop(columns=["exited"])
 
     # # check that the target variable has been removed
     X.head()
