@@ -12,7 +12,7 @@ from sklearn.ensemble import BaggingClassifier
 from sklearn.datasets import make_classification
 from sklearn.svm import SVC
 
-st.title("APLIKASI WEB DATA ")
+st.title("APLIKASI WEB DATA M")
 st.write("Nama : Firdatul Fitriyah | Nim : 200411100020")
 import_data, preporcessing, modeling, evalution, implementation = st.tabs(["Import Data", "Prepocessing", "Modeling", "evalution","Implementation"])
 
