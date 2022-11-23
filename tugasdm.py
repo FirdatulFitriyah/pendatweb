@@ -200,7 +200,7 @@ with modeling:
     eval = st.button("Evaluasi semua model")
     if eval :
         # st.snow()
-        source = pd.DataFrame({
+        source = pd.N_Days({
             'Nilai Akurasi' : [akurasi,skor_akurasi,akurasiii],
             'Nama Model' : ['Naive Bayes','KNN','Decision Tree']
         })
