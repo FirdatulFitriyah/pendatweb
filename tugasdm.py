@@ -29,8 +29,8 @@ upload_data, preporcessing, modeling, implementation = st.tabs(["Upload Data", "
 
 with upload_data:
     st.write("""# Upload File""")
-    st.write("Dataset yang digunakan adalah Churn Modelling dataset yang diambil dari https://www.kaggle.com/datasets/shrutimechlearn/churn-modelling")
-    st.write("Total datanya adalah 10000")
+    st.write("Dataset yang digunakan adalah Cirrhosis Prediction Dataset yang diambil dari https://www.kaggle.com/datasets/fedesoriano/cirrhosis-prediction-dataset")
+    st.write("Total datanya adalah 418")
     uploaded_files = st.file_uploader("Upload file CSV", accept_multiple_files=True)
     for uploaded_file in uploaded_files:
         df = pd.read_csv(uploaded_file)
@@ -40,13 +40,13 @@ with upload_data:
 
 with preporcessing:
     st.write("""# Preprocessing""")
-    df[["RowNumber", "CustomerId", "Surname", "CreditScore", "Geography", "Gender", "Age", "Tenure", "Balance","NumOfProducts","HasCrCard","IsActiveMember","EstimatedSalary","Exited"]].agg(['min','max'])
+    df[["ID", "N_Days", "Status", "Drug", "Age", "Sex", "Ascites", "Hepatomegaly", "Spiders","Edema","Bilirubin","Cholesterol","Albumin","Copper","Alk_Phos","SGOT","Tryglicerides","Platelets","Prothrombin","Stage"]].agg(['min','max'])
 
-    df.stroke.value_counts()
-    df = df.drop(columns=["id","bmi"])
+    df.cirrhosis.value_counts()
+    df = df.drop(columns=["ID"])
 
-    X = df.drop(columns="stroke")
-    y = df.stroke
+    X = df.drop(columns="cirrhosis")
+    y = df.cirrhosis
     "### Membuang fitur yang tidak diperlukan"
     df
 
@@ -59,7 +59,7 @@ with preporcessing:
 
     le.inverse_transform(y)
 
-    labels = pd.get_dummies(df.stroke).columns.values.tolist()
+    labels = pd.get_dummies(df.cirrhosis).columns.values.tolist()
 
     "### Label"
     labels
@@ -68,44 +68,44 @@ with preporcessing:
 
     "### Normalize data"
 
-    dataubah=df.drop(columns=['gender','ever_married','work_type','Residence_type','smoking_status'])
+    dataubah=df.drop(columns=['N_Days','Status','Drug','Age','Sex'])
     dataubah
 
-    "### Normalize data gender"
-    data_gen=df[['gender']]
-    gen = pd.get_dummies(data_gen)
-    gen
+    "### Normalize data N_Days"
+    data_days=df[['N_Days']]
+    days = pd.get_dummies(data_days)
+    days
 
     # "### Normalize data Hypertension"
     # data_hypertension=df[['hypertension']]
     # hypertension = pd.get_dummies(data_hypertension)
     # hypertension
 
-    "### Normalize data married"
-    data_married=df[['ever_married']]
-    married = pd.get_dummies(data_married)
-    married
+    "### Normalize data Status"
+    data_status=df[['Status']]
+    status = pd.get_dummies(data_status)
+    status
 
-    "### Normalize data work"
-    data_work=df[['work_type']]
-    work = pd.get_dummies(data_work)
-    work
+    "### Normalize data Drug"
+    data_drug=df[['Drug']]
+    drug = pd.get_dummies(data_drug)
+    drug
 
-    "### Normalize data residence"
-    data_residence=df[['Residence_type']]
-    residence = pd.get_dummies(data_residence)
-    residence
+    "### Normalize data Age"
+    data_age=df[['Age']]
+    age = pd.get_dummies(data_age)
+    age
 
-    "### Normalize data smoke"
-    data_smoke=df[['smoking_status']]
-    smoke = pd.get_dummies(data_smoke)
-    smoke
+    "### Normalize data Sex"
+    data_sex=df[['Sex']]
+    sex = pd.get_dummies(data_sex)
+    sex
 
-    dataOlah = pd.concat([gen,married,work,residence,smoke], axis=1)
+    dataOlah = pd.concat([days,status,drug,age,sex], axis=1)
     dataHasil = pd.concat([df,dataOlah], axis = 1)
 
-    X = dataHasil.drop(columns=["gender","ever_married","work_type","Residence_type","smoking_status","stroke"])
-    y = dataHasil.stroke
+    X = dataHasil.drop(columns=["days","status","drug","age","sex","cirrhosis"])
+    y = dataHasil.cirrhosis
     "### Normalize data hasil"
     X
 
@@ -119,7 +119,7 @@ with preporcessing:
 
     le.inverse_transform(y)
 
-    labels = pd.get_dummies(dataHasil.stroke).columns.values.tolist()
+    labels = pd.get_dummies(dataHasil.cirrhosis).columns.values.tolist()
     
     "### Label"
     labels
