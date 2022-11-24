@@ -24,13 +24,15 @@ from sklearn.utils.validation import joblib
 st.title("PENAMBANGAN DATA")
 st.write("By: Firdatul Fitriyah - 200411100020")
 st.write("Grade: Penambangan Data C")
-upload_data, preporcessing, modeling,evaluation, implementation = st.tabs(["Upload Data", "Prepocessing", "Modeling", "evaluation","Implementation"])
+description, upload_data, preporcessing, modeling,evaluation, implementation = st.tabs(["description","Upload Data", "Prepocessing", "Modeling", "evaluation","Implementation"])
 
 
-with upload_data:
-    st.write("""# Upload File""")
+with description:
+    st.write("""# Deskripsi Data""")
     st.write("Dataset yang digunakan adalah Cirrhosis Prediction Dataset yang diambil dari https://www.kaggle.com/datasets/fedesoriano/cirrhosis-prediction-dataset")
     st.write("Total datanya adalah 418")
+with upload_data:
+    st.write("""# Upload File""")
     uploaded_files = st.file_uploader("Upload file CSV", accept_multiple_files=True)
     for uploaded_file in uploaded_files:
         df = pd.read_csv(uploaded_file)
@@ -45,7 +47,7 @@ with preporcessing:
     #df.cirrhosis.value_counts()
     df = df.drop(columns=["ID"])
 
-    X = df.drop(columns="cirrhosis")
+    X = df.drop(columns="")
     y = df.cirrhosis
     "### Membuang fitur yang tidak diperlukan"
     df
