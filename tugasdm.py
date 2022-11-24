@@ -40,7 +40,7 @@ with description:
     st.write("6) Jenis Kelamin: M (laki-laki) atau F (perempuan)")
     st.write("7) Asites: adanya asites N (Tidak) atau Y (Ya)")
     st.write("8) Hepatomegali: adanya hepatomegali N (Tidak) atau Y (Ya)")
-    st.write("9) Laba-laba: keberadaan laba-laba N (Tidak) atau Y (Ya)"
+    st.write("9) Laba-laba: keberadaan laba-laba N (Tidak) atau Y (Ya)")
     st.write("10) Edema: adanya edema N (tidak ada edema dan tidak ada terapi diuretik untuk edema), S (ada edema tanpa diuretik, atau edema teratasi dengan diuretik), atau Y (edema meskipun dengan terapi diuretik)")
     st.write("11) Bilirubin: bilirubin serum dalam [mg/dl]")
     st.write("12) Kolesterol: kolesterol serum dalam [mg/dl]")
