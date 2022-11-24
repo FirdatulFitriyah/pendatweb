@@ -67,11 +67,11 @@ with preporcessing:
     st.write("""# Preprocessing""")
     df[["ID", "N_Days", "Status", "Drug", "Age", "Sex", "Ascites", "Hepatomegaly", "Spiders","Edema","Bilirubin","Cholesterol","Albumin","Copper","Alk_Phos","SGOT","Tryglicerides","Platelets","Prothrombin","Stage"]].agg(['min','max'])
 
-    df.cirrhosis.value_counts()
-    df = df.drop(columns=["ID"])
+    #df.Stage.value_counts()
+    #df = df.drop(columns=["ID"])
 
     X = df.drop(columns="Stage")
-    y = df.cirrhosis
+    y = df.Stage
     "### Membuang fitur yang tidak diperlukan"
     df
 
