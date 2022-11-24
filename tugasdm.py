@@ -84,7 +84,7 @@ with preporcessing:
 
     le.inverse_transform(y)
 
-    labels = pd.get_dummies(df.cirrhosis).columns.values.tolist()
+    labels = pd.get_dummies(df.Stage).columns.values.tolist()
 
     "### Label"
     labels
