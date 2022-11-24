@@ -37,7 +37,7 @@ with upload_data:
     for uploaded_file in uploaded_files:
         df = pd.read_csv(uploaded_file)
         st.write("Nama File Anda = ", uploaded_file.name)
-        st.Stage(df)
+        #st.dataframe(df)
 
 
 with preporcessing:
