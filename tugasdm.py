@@ -42,7 +42,7 @@ with preporcessing:
     st.write("""# Preprocessing""")
     df[["ID", "N_Days", "Status", "Drug", "Age", "Sex", "Ascites", "Hepatomegaly", "Spiders","Edema","Bilirubin","Cholesterol","Albumin","Copper","Alk_Phos","SGOT","Tryglicerides","Platelets","Prothrombin","Stage"]].agg(['min','max'])
 
-    df.cirrhosis.value_counts()
+    #df.cirrhosis.value_counts()
     df = df.drop(columns=["ID"])
 
     X = df.drop(columns="cirrhosis")
