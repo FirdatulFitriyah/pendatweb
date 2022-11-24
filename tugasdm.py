@@ -97,9 +97,9 @@ with preporcessing:
     dataubah
 
     "### Normalize data N_Days"
-    data_days=df[['N_Days']]
-    days = pd.get_dummies(data_days)
-    days
+    data_Ndays=df[['N_Days']]
+    N_Days = pd.get_dummies(data_Ndays)
+    N_Days
 
     # "### Normalize data Hypertension"
     # data_hypertension=df[['hypertension']]
@@ -107,30 +107,30 @@ with preporcessing:
     # hypertension
 
     "### Normalize data Status"
-    data_status=df[['Status']]
-    status = pd.get_dummies(data_status)
-    status
+    data_Status=df[['Status']]
+    Status = pd.get_dummies(data_Status)
+    Status
 
     "### Normalize data Drug"
-    data_drug=df[['Drug']]
-    drug = pd.get_dummies(data_drug)
-    drug
+    data_Drug=df[['Drug']]
+    Drug = pd.get_dummies(data_Drug)
+    Drug
 
     "### Normalize data Age"
-    data_age=df[['Age']]
-    age = pd.get_dummies(data_age)
-    age
+    data_Age=df[['Age']]
+    Age = pd.get_dummies(data_Age)
+    Age
 
     "### Normalize data Sex"
-    data_sex=df[['Sex']]
-    sex = pd.get_dummies(data_sex)
-    sex
+    data_Sex=df[['Sex']]
+    Sex = pd.get_dummies(data_Sex)
+    Sex
 
-    dataOlah = pd.concat([days,status,drug,age,sex], axis=1)
+    dataOlah = pd.concat([N_Days,Status,Drug,Age,Sex], axis=1)
     dataHasil = pd.concat([df,dataOlah], axis = 1)
 
-    X = dataHasil.drop(columns=["days","status","drug","age","sex","cirrhosis"])
-    y = dataHasil.cirrhosis
+    X = dataHasil.drop(columns=["N_Days","Status","Drug","Age","Sex","cirrhosis"])
+    y = dataHasil.Stage
     "### Normalize data hasil"
     X
 
@@ -488,4 +488,3 @@ with implementation:
     if all :
         st.balloons()
         submit()
-
