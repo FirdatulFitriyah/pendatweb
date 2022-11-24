@@ -24,7 +24,7 @@ from sklearn.utils.validation import joblib
 st.title("PENAMBANGAN DATA")
 st.write("By: Firdatul Fitriyah - 200411100020")
 st.write("Grade: Penambangan Data C")
-upload_data, preporcessing, modeling, implementation = st.tabs(["Upload Data", "Prepocessing", "Modeling", "Implementation"])
+upload_data, preporcessing, modeling,evaluation, implementation = st.tabs(["Upload Data", "Prepocessing", "Modeling", "evaluation","Implementation"])
 
 
 with upload_data:
