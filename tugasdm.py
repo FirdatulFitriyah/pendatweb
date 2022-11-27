@@ -50,7 +50,7 @@ with description:
     st.write("18) Trombosit: trombosit per kubik [ml/1000]")
     st.write("19) Protrombin: waktu protrombin dalam detik [s]")
     st.write("20) Stadium: stadium histologis penyakit (1, 2, 3, atau 4)")
-    st.write("###### Source Code Aplikasi ada di Github anda bisa acces di link :  ")
+    st.write("###### Source Code Aplikasi ada di Github anda bisa acces di link : https://github.com/FirdatulFitriyah/pendatweb ")
 
 with upload_data:
     st.write("""# Upload File""")
