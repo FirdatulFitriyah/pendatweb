@@ -64,11 +64,11 @@ with preporcessing:
     st.write("""# Preprocessing""")
     df[["ID", "N_Days", "Status", "Drug", "Age", "Sex", "Ascites", "Hepatomegaly", "Spiders","Edema","Bilirubin","Cholesterol","Albumin","Copper","Alk_Phos","SGOT","Tryglicerides","Platelets","Prothrombin","Stage"]].agg(['min','max'])
 
-    df.ID.value_counts()
+    df.id.value_counts()
     # df = df.drop(columns=["date"])
 
-    X = df.drop(columns="ID")
-    y = df.ID
+    X = df.drop(columns="id")
+    y = df.id
     "### Membuang fitur yang tidak diperlukan"
     df
 
@@ -81,7 +81,7 @@ with preporcessing:
 
     le.inverse_transform(y)
 
-    labels = pd.get_dummies(df.ID).columns.values.tolist()
+    labels = pd.get_dummies(df.id).columns.values.tolist()
 
     "### Label"
     labels
@@ -96,7 +96,7 @@ with preporcessing:
 
     le.inverse_transform(y)
 
-    labels = pd.get_dummies(df.ID).columns.values.tolist()
+    labels = pd.get_dummies(df.id).columns.values.tolist()
     
     "### Label"
     labels
