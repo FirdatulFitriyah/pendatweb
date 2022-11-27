@@ -68,7 +68,7 @@ with preporcessing:
     # df = df.drop(columns=["date"])
 
     X = df.drop(columns="Exited")
-    y = df.a
+    y = df.Exited
     "### Membuang fitur yang tidak diperlukan"
     df
 
