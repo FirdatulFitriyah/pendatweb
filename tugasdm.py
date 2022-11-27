@@ -62,13 +62,13 @@ with upload_data:
 
 with preporcessing:
     st.write("""# Preprocessing""")
-    df[["RowNumber","CustomerId","Surname","CreditScore","Geography","Gender","Age","Tenure","Balance","NumOfProducts","HasCrCard","IsActiveMember","EstimatedSalary","Exited"]].agg(['min','max'])
-   
-    df.Exited.value_counts()
+    df[["ID", "N_Days", "Status", "Drug", "Age", "Sex", "Ascites", "Hepatomegaly", "Spiders","Edema","Bilirubin","Cholesterol","Albumin","Copper","Alk_Phos","SGOT","Tryglicerides","Platelets","Prothrombin","Stage"]].agg(['min','max'])
+
+    df.Stage.value_counts()
     # df = df.drop(columns=["date"])
 
-    X = df.drop(columns="Exited")
-    y = df.Exited
+    X = df.drop(columns="Stage")
+    y = df.Stage
     "### Membuang fitur yang tidak diperlukan"
     df
 
@@ -81,7 +81,7 @@ with preporcessing:
 
     le.inverse_transform(y)
 
-    labels = pd.get_dummies(df.Exited).columns.values.tolist()
+    labels = pd.get_dummies(df.Stage).columns.values.tolist()
 
     "### Label"
     labels
@@ -96,7 +96,7 @@ with preporcessing:
 
     le.inverse_transform(y)
 
-    labels = pd.get_dummies(df.Exited).columns.values.tolist()
+    labels = pd.get_dummies(df.Stage).columns.values.tolist()
     
     "### Label"
     labels
