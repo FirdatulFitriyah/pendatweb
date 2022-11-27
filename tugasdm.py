@@ -20,8 +20,8 @@ import altair as alt
 from sklearn.utils.validation import joblib
 
 st.title("PENAMBANGAN DATA")
-st.write("##### Nama  : Choirinnisa' Fitria ")
-st.write("##### Nim   : 2004111000149 ")
+st.write("##### Nama  : Firdatul Fitriyah")
+st.write("##### Nim   : 200411100020")
 st.write("##### Kelas : Penambangan Data C ")
 description, upload_data, preporcessing, modeling, implementation = st.tabs(["Description", "Upload Data", "Prepocessing", "Modeling", "Implementation"])
 
@@ -50,7 +50,7 @@ with description:
     st.write("18) Trombosit: trombosit per kubik [ml/1000]")
     st.write("19) Protrombin: waktu protrombin dalam detik [s]")
     st.write("20) Stadium: stadium histologis penyakit (1, 2, 3, atau 4)")
-    st.write("###### Source Code Aplikasi ada di Github anda bisa acces di link : https://github.com/choirinnisafitria/Web-Data-Mining ")
+    st.write("###### Source Code Aplikasi ada di Github anda bisa acces di link :  ")
 
 with upload_data:
     st.write("""# Upload File""")
@@ -62,13 +62,13 @@ with upload_data:
 
 with preporcessing:
     st.write("""# Preprocessing""")
-    df[["ID", "N_Days", "Status", "Drug", "Age", "Sex", "Ascites", "Hepatomegaly", "Spiders","Edema","Bilirubin","Cholesterol","Albumin","Copper","Alk_Phos","SGOT","Tryglicerides","Platelets","Prothrombin"]].agg(['min','max'])
+    df[["ID", "N_Days", "Status", "Drug", "Age", "Sex", "Ascites", "Hepatomegaly", "Spiders","Edema","Bilirubin","Cholesterol","Albumin","Copper","Alk_Phos","SGOT","Tryglicerides","Platelets","Prothrombin","Stage"]].agg(['min','max'])
 
-    df.ID.value_counts()
+    df.a.value_counts()
     # df = df.drop(columns=["date"])
 
-    X = df.drop(columns="ID")
-    y = df.ID
+    X = df.drop(columns="a")
+    y = df.a
     "### Membuang fitur yang tidak diperlukan"
     df
 
@@ -81,7 +81,7 @@ with preporcessing:
 
     le.inverse_transform(y)
 
-    labels = pd.get_dummies(df.ID).columns.values.tolist()
+    labels = pd.get_dummies(df.a).columns.values.tolist()
 
     "### Label"
     labels
@@ -96,7 +96,7 @@ with preporcessing:
 
     le.inverse_transform(y)
 
-    labels = pd.get_dummies(df.ID).columns.values.tolist()
+    labels = pd.get_dummies(df.a).columns.values.tolist()
     
     "### Label"
     labels
@@ -182,26 +182,46 @@ with modeling:
 
 with implementation:
     st.write("# Implementation")
-    Snoring_Rate = st.number_input('Masukkan tingkat mendengkur : ')
-    Respiration_Rate = st.number_input('Masukkan laju respirasi : ')
-    Body_Temperature = st.number_input('Masukkan suhu tubuh : ')
-    Limb_Movement = st.number_input('Masukkan gerakan ekstremitas : ')
-    Blood_Oxygen = st.number_input('Masukkan oksigen darah : ')
-    Eye_Movement = st.number_input('Masukkan gerakan mata : ')
-    Sleeping_Hours = st.number_input('Masukkan jam tidur : ')
-    Heart_Rate = st.number_input('Masukkan detak jantung : ')
-
+    N_Days = st.number_input('Masukkan jumlah hari : ')
+    Status = st.number_input('Masukkan status : ')
+    Drug = st.number_input('Masukkan jenis obat : ')
+    Age  = st.number_input('Masukkan umur : ')
+    Sex = st.number_input('Masukkan jenis kelamin : ')
+    Ascites  = st.number_input('Masukkan asites : ')
+    Hepatomegaly = st.number_input('Masukkan Hepatomegali : ')
+    Spiders = st.number_input('Masukkan Spiders : ')
+    Edema = st.number_input('Masukkan Edema : ')
+    Bilirubin = st.number_input('Masukkan Bilirubin : ')
+    Cholesterol = st.number_input('Masukkan kolesterol : ')
+    Albumin = st.number_input('Masukkan Albumin : ')
+    Copper = st.number_input('Masukkan Copper : ')
+    Alk_Phos = st.number_input('Masukkan Alk_Phos : ')
+    SGOT = st.number_input('Masukkan SGOT : ')
+    Tryglicerides = st.number_input('Masukkan Tryglicerides : ')
+    Platelets = st.number_input('Masukkan  Platelets : ')
+    Prothrombin = st.number_input('Masukkan Prothrombin : ')
+    
     def submit():
         # input
         inputs = np.array([[
-            Snoring_Rate,
-            Respiration_Rate,
-            Body_Temperature,
-            Limb_Movement,
-            Blood_Oxygen,
-            Eye_Movement,
-            Sleeping_Hours,
-            Heart_Rate
+            N_Days,
+            Status,
+            Drug, 
+            Age, 
+            Sex, 
+            Ascites, 
+            Hepatomegaly, 
+            Spiders,
+            Edema,
+            Bilirubin,
+            Cholesterol,
+            Albumin,
+            Copper,
+            Alk_Phos,
+            SGOT,
+            Tryglicerides,
+            Platelets,
+            Prothrombin,
             ]])
         le = joblib.load("le.save")
         model1 = joblib.load("knn.joblib")
