@@ -81,7 +81,7 @@ with preporcessing:
 
     le.inverse_transform(y)
 
-    labels = pd.get_dummies(df.sl).columns.values.tolist()
+    labels = pd.get_dummies(df.ID).columns.values.tolist()
 
     "### Label"
     labels
@@ -96,7 +96,7 @@ with preporcessing:
 
     le.inverse_transform(y)
 
-    labels = pd.get_dummies(df.sl).columns.values.tolist()
+    labels = pd.get_dummies(df.ID).columns.values.tolist()
     
     "### Label"
     labels
