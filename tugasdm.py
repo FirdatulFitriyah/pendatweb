@@ -50,7 +50,7 @@ with description:
     st.write("18) Trombosit: trombosit per kubik [ml/1000]")
     st.write("19) Protrombin: waktu protrombin dalam detik [s]")
     st.write("20) Stadium: stadium histologis penyakit (1, 2, 3, atau 4)")
-    st.write("###### Source Code Aplikasi ada di Github anda bisa acces di link : https://github.com/FirdatulFitriyah/pendatweb ")
+    st.write("###### Source Code Aplikasi ada di Github anda bisa acces di link :  ")
 
 with upload_data:
     st.write("""# Upload File""")
@@ -62,7 +62,7 @@ with upload_data:
 
 with preporcessing:
     st.write("""# Preprocessing""")
-    df[["N_Days", "Status", "Drug", "Age", "Sex", "Ascites", "Hepatomegaly", "Spiders","Edema","Bilirubin","Cholesterol","Albumin","Copper","Alk_Phos","SGOT","Tryglicerides","Platelets","Prothrombin","Stage"]].agg(['min','max'])
+    df[["ID", "N_Days", "Status", "Drug", "Age", "Sex", "Ascites", "Hepatomegaly", "Spiders","Edema","Bilirubin","Cholesterol","Albumin","Copper","Alk_Phos","SGOT","Tryglicerides","Platelets","Prothrombin","Stage"]].agg(['min','max'])
 
     df.Stage.value_counts()
     # df = df.drop(columns=["date"])
@@ -200,7 +200,7 @@ with implementation:
     Tryglicerides = st.number_input('Masukkan Tryglicerides : ')
     Platelets = st.number_input('Masukkan  Platelets : ')
     Prothrombin = st.number_input('Masukkan Prothrombin : ')
-
+    
     def submit():
         # input
         inputs = np.array([[
@@ -221,7 +221,7 @@ with implementation:
             SGOT,
             Tryglicerides,
             Platelets,
-            Prothrombin
+            Prothrombin,
             ]])
         le = joblib.load("le.save")
         model1 = joblib.load("knn.joblib")
@@ -232,4 +232,3 @@ with implementation:
     if all :
         st.balloons()
         submit()
-
