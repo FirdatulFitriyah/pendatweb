@@ -62,13 +62,13 @@ with upload_data:
 
 with preporcessing:
     st.write("""# Preprocessing""")
-    df[["id", "N_Days", "Status", "Drug", "Age", "Sex", "Ascites", "Hepatomegaly", "Spiders","Edema","Bilirubin","Cholesterol","Albumin","Copper","Alk_Phos","SGOT","Tryglicerides","Platelets","Prothrombin","Stage"]].agg(['min','max'])
+    df[["ID", "N_Days", "Status", "Drug", "Age", "Sex", "Ascites", "Hepatomegaly", "Spiders","Edema","Bilirubin","Cholesterol","Albumin","Copper","Alk_Phos","SGOT","Tryglicerides","Platelets","Prothrombin"]].agg(['min','max'])
 
-    df.id.value_counts()
+    df.sg.value_counts()
     # df = df.drop(columns=["date"])
 
-    X = df.drop(columns="id")
-    y = df.id
+    X = df.drop(columns="sg")
+    y = df.sg
     "### Membuang fitur yang tidak diperlukan"
     df
 
@@ -81,7 +81,7 @@ with preporcessing:
 
     le.inverse_transform(y)
 
-    labels = pd.get_dummies(df.id).columns.values.tolist()
+    labels = pd.get_dummies(df.sg).columns.values.tolist()
 
     "### Label"
     labels
@@ -96,7 +96,7 @@ with preporcessing:
 
     le.inverse_transform(y)
 
-    labels = pd.get_dummies(df.id).columns.values.tolist()
+    labels = pd.get_dummies(df.sg).columns.values.tolist()
     
     "### Label"
     labels
@@ -200,7 +200,6 @@ with implementation:
     Tryglicerides = st.number_input('Masukkan Tryglicerides : ')
     Platelets = st.number_input('Masukkan  Platelets : ')
     Prothrombin = st.number_input('Masukkan Prothrombin : ')
-    Stage = st.number_input('Masukkan jenis stadium : ')
 
     def submit():
         # input
@@ -222,8 +221,7 @@ with implementation:
             SGOT,
             Tryglicerides,
             Platelets,
-            Prothrombin,
-            Stage
+            Prothrombin
             ]])
         le = joblib.load("le.save")
         model1 = joblib.load("knn.joblib")
