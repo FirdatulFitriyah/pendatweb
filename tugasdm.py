@@ -1,3 +1,4 @@
+from pyrsistent import v
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -20,37 +21,34 @@ import altair as alt
 from sklearn.utils.validation import joblib
 
 st.title("PENAMBANGAN DATA")
-st.write("##### Nama  : Firdatul Fitriyah")
+st.write("##### Nama  : Firdatul Fitriyah ")
 st.write("##### Nim   : 200411100020")
 st.write("##### Kelas : Penambangan Data C ")
-description, upload_data, preporcessing, modeling, implementation = st.tabs(["Description", "Upload Data", "Prepocessing", "Modeling", "Implementation"])
+data_set_description, upload_data, preporcessing, modeling, implementation = st.tabs(["Data Set Description", "Upload Data", "Prepocessing", "Modeling", "Implementation"])
 
-with description:
+with data_set_description:
+    st.write("""# Data Set Description """)
+    st.write("###### Data Set Ini Adalah : Heart Failure Prediction (Prediksi Gagal Jantung) ")
+    st.write("###### Sumber Data Set dari Kaggle : https://www.kaggle.com/datasets/andrewmvd/heart-failure-clinical-data")
     st.write("""# Deskripsi Data""")
-    st.write("Dataset yang digunakan adalah Cirrhosis Prediction Dataset yang diambil dari https://www.kaggle.com/datasets/fedesoriano/cirrhosis-prediction-dataset")
-    st.write("Total datanya adalah 418 data")
+    st.write("Total datanya adalah 299 data pasien")
     st.write("Informasi Atribut")
-    st.write("1) ID: pengidentifikasi unik")
-    st.write("2) N_Days: jumlah hari antara pendaftaran dan kematian yang lebih awal, transplantasi, atau waktu analisis studi pada Juli 1986")
-    st.write("3) Status: status pasien C (disensor), CL (disensor karena tx hati), atau D (meninggal)")
-    st.write("4) Obat : jenis obat D-penicillamine atau placebo")
-    st.write("5) Umur: umur dalam [hari]")
-    st.write("6) Jenis Kelamin: M (laki-laki) atau F (perempuan)")
-    st.write("7) Asites: adanya asites N (Tidak) atau Y (Ya)")
-    st.write("8) Hepatomegali: adanya hepatomegali N (Tidak) atau Y (Ya)")
-    st.write("9) Laba-laba: keberadaan laba-laba N (Tidak) atau Y (Ya)")
-    st.write("10) Edema: adanya edema N (tidak ada edema dan tidak ada terapi diuretik untuk edema), S (ada edema tanpa diuretik, atau edema teratasi dengan diuretik), atau Y (edema meskipun dengan terapi diuretik)")
-    st.write("11) Bilirubin: bilirubin serum dalam [mg/dl]")
-    st.write("12) Kolesterol: kolesterol serum dalam [mg/dl]")
-    st.write("13) Albumin: albumin dalam [gm/dl]")
-    st.write("14) Tembaga: tembaga urin dalam [ug/hari]")
-    st.write("15) Alk_Phos: alkaline phosphatase dalam [U/liter]")
-    st.write("16) SGOT: SGOT dalam [U/ml]")
-    st.write("17) Trigliserida: trigliserida dalam [mg/dl]")
-    st.write("18) Trombosit: trombosit per kubik [ml/1000]")
-    st.write("19) Protrombin: waktu protrombin dalam detik [s]")
-    st.write("20) Stadium: stadium histologis penyakit (1, 2, 3, atau 4)")
-    st.write("###### Source Code Aplikasi ada di Github anda bisa acces di link :  ")
+    st.write("1) Age : Umur dari pasien penyakit gagal jantung ")
+    st.write("2) Anemia : Menurunnya hemoglobin atau sel darah merah dalam tubuh (1 = Ya, 0 = Tidak) ")
+    st.write("3) High Blood Pressure : Hipertensi ")
+    st.write("4) Creatinine Phosphoki nase (CPK) : Enzim CPK dalam darah ")
+    st.write("5) Diabetes : Pasien menderita diabetes atau tidak (1 = Ya, 0 = Tidak) ")
+    st.write("6) Ejection Fraction : Volume darah yang mengalir meninggalkan jantung setiap jantung berkontraksi ")
+    st.write("7) Platelets : Jumlah trombosit dalam tubuh ")
+    st.write("8) Sex : Jenis Kelamin (1 = Laki-Laki, 0 = Perempuan ")
+    st.write("9) Serum Creatinine : Jumlah kreatinin serum yang terdapat pada darah ")
+    st.write("10) Serum Sodium : Jumlah natrium serum yang terdapat pada darah ")
+    st.write("11) Smoking : Perokok atau tidak perokok (1 = Ya, 0 = Tidak)")
+    st.write("12) Time : Periode tindak lanjut (6 hari)")
+    st.write("13) (Target) Death Event  : Pasien yang telah meninggal dalam masa tindak lanjut (1 = Gagal Jantung, 0 = Tidak Gagal jantung)")
+
+    st.write("###### Aplikasi ini untuk : Heart Failure Prediction (Prediksi Gagal Jantung) ")
+    st.write("###### Source Code Aplikasi ada di Github anda bisa acces di link :https://github.com/FirdatulFitriyah/pendatweb  ")
 
 with upload_data:
     st.write("""# Upload File""")
@@ -62,13 +60,13 @@ with upload_data:
 
 with preporcessing:
     st.write("""# Preprocessing""")
-    df[["ID", "N_Days", "Status", "Drug", "Age", "Sex", "Ascites", "Hepatomegaly", "Spiders","Edema","Bilirubin","Cholesterol","Albumin","Copper","Alk_Phos","SGOT","Tryglicerides","Platelets","Prothrombin","Stage"]].agg(['min','max'])
+    df[["age","anaemia","creatinine_phosphokinase","diabetes","ejection_fraction","high_blood_pressure","platelets","serum_creatinine","serum_sodium","sex","smoking",	"time",	"DEATH_EVENT"]].agg(['min','max'])
 
-    df.Stage.value_counts()
-    # df = df.drop(columns=["date"])
+    df.DEATH_EVENT.value_counts()
+    #df = df.drop(columns=["date"])
 
-    X = df.drop(columns="Stage")
-    y = df.Stage
+    X = df.drop(columns="DEATH_EVENT")
+    y = df.DEATH_EVENT
     "### Membuang fitur yang tidak diperlukan"
     df
 
@@ -81,7 +79,7 @@ with preporcessing:
 
     le.inverse_transform(y)
 
-    labels = pd.get_dummies(df.Stage).columns.values.tolist()
+    labels = pd.get_dummies(df.DEATH_EVENT).columns.values.tolist()
 
     "### Label"
     labels
@@ -96,7 +94,7 @@ with preporcessing:
 
     le.inverse_transform(y)
 
-    labels = pd.get_dummies(df.Stage).columns.values.tolist()
+    labels = pd.get_dummies(df.DEATH_EVENT).columns.values.tolist()
     
     "### Label"
     labels
@@ -182,51 +180,39 @@ with modeling:
 
 with implementation:
     st.write("# Implementation")
-    N_Days = st.number_input('Masukkan jumlah hari : ')
-    Status = st.number_input('Masukkan status : ')
-    Drug = st.number_input('Masukkan jenis obat : ')
-    Age  = st.number_input('Masukkan umur : ')
-    Sex = st.number_input('Masukkan jenis kelamin : ')
-    Ascites  = st.number_input('Masukkan asites : ')
-    Hepatomegaly = st.number_input('Masukkan Hepatomegali : ')
-    Spiders = st.number_input('Masukkan Spiders : ')
-    Edema = st.number_input('Masukkan Edema : ')
-    Bilirubin = st.number_input('Masukkan Bilirubin : ')
-    Cholesterol = st.number_input('Masukkan kolesterol : ')
-    Albumin = st.number_input('Masukkan Albumin : ')
-    Copper = st.number_input('Masukkan Copper : ')
-    Alk_Phos = st.number_input('Masukkan Alk_Phos : ')
-    SGOT = st.number_input('Masukkan SGOT : ')
-    Tryglicerides = st.number_input('Masukkan Tryglicerides : ')
-    Platelets = st.number_input('Masukkan  Platelets : ')
-    Prothrombin = st.number_input('Masukkan Prothrombin : ')
-    
+    age = st.number_input('Masukkan Umur : ')
+    anaemia = st.number_input('Masukkan nilai Anemia : ')
+    creatinine_phosphokinase = st.number_input('Masukkan nilai Enzim CPK dalam Darah : ')
+    diabetes = st.number_input('Masukkan nilai Diabetes : ')
+    ejection_fraction = st.number_input('Masukkan Nilai Fraksi Ejeksi : ')
+    high_blood_pressure = st.number_input('Masukkan nilai hipertensi  : ')
+    platelets = st.number_input('Masukkan Nilai Jumlah trombosit dalam tubuh : ')
+    serum_creatinine = st.number_input('Masukkan Nilai Jumlah Creatin Serum : ')
+    serum_sodium = st.number_input('Masukkan Nilai Jumlah Natrium Serum : ')
+    sex = st.number_input('Masukkan Jenis Kelamin : ')
+    smoking = st.number_input('Masukkan Smoking : ')
+    time = st.number_input('Masukkan Nilai Periode Tindak Lanjut : ')
+
     def submit():
         # input
         inputs = np.array([[
-            N_Days,
-            Status,
-            Drug, 
-            Age, 
-            Sex, 
-            Ascites, 
-            Hepatomegaly, 
-            Spiders,
-            Edema,
-            Bilirubin,
-            Cholesterol,
-            Albumin,
-            Copper,
-            Alk_Phos,
-            SGOT,
-            Tryglicerides,
-            Platelets,
-            Prothrombin,
+            age,
+            anaemia,
+            creatinine_phosphokinase,
+            diabetes,
+            ejection_fraction,
+            high_blood_pressure,
+            platelets,
+            serum_creatinine,
+            serum_sodium,
+            sex,
+            smoking,
+            time,
             ]])
         le = joblib.load("le.save")
         model1 = joblib.load("knn.joblib")
         y_pred3 = model1.predict(inputs)
-        st.write(f"Berdasarkan data yang di masukkan, maka Deteksi Stres Manusia di dalam dan melalui Tidur : {le.inverse_transform(y_pred3)[0]}")
+        st.write(f"Berdasarkan data yang di masukkan, maka anda prediksi cuaca : {le.inverse_transform(y_pred3)[0]}")
 
     all = st.button("Submit")
     if all :
