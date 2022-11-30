@@ -42,8 +42,8 @@ with data_set_description:
     st.write("5) urea : konsentrasi urea dalam milimol per liter ")
     st.write("6) calc : kalsium konsentrasi (CALC) dalam milimol-liter ")
     st.write("7) target : penentuan termasuk batu ginjal atau tidak ")
-    st.write (""""0 = Tidak Adanya Batu Ginjal"""")
-    st.write (""""1 = Adanya Batu Ginjal"""")
+    st.write ("""0 = Tidak Adanya Batu Ginjal""")
+    st.write ("""1 = Adanya Batu Ginjal""")
     
     st.write("###### Aplikasi ini untuk : Kidney Stone Prediction based on Urine Analysis (Prediksi Batu Ginjal Berdasarkan Analisis Urin) ")
     st.write("###### Source Code Aplikasi ada di Github anda bisa acces di link :https://github.com/FirdatulFitriyah/pendatweb  ")
