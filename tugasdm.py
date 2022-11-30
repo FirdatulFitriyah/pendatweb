@@ -28,29 +28,24 @@ data_set_description, upload_data, preporcessing, modeling, implementation = st.
 
 with data_set_description:
     st.write("""# Data Set Description """)
-    st.write("###### Data Set Ini Adalah : Heart Failure Prediction (Prediksi Gagal Jantung) ")
-    st.write("###### Sumber Data Set dari Kaggle : https://www.kaggle.com/datasets/andrewmvd/heart-failure-clinical-data")
-    st.write(" Penyakit kardiovaskular (CVDs) adalah penyebab kematian nomor 1 secara global, merenggut sekitar 17,9 juta nyawa setiap tahun, yang merupakan 31% dari semua kematian di seluruh dunia. Gagal jantung adalah kejadian umum yang disebabkan oleh CVD dan kumpulan data ini berisi 12 fitur yang dapat digunakan untuk memprediksi kematian akibat gagal jantung. ")
-    st.write(" Sebagian besar penyakit kardiovaskular dapat dicegah dengan mengatasi faktor risiko perilaku seperti penggunaan tembakau, pola makan yang tidak sehat dan obesitas, kurangnya aktivitas fisik, dan penggunaan alkohol yang berbahaya dengan menggunakan strategi populasi luas. ")
-    st.write(" Orang dengan penyakit kardiovaskular atau yang memiliki risiko kardiovaskular tinggi (karena adanya satu atau lebih faktor risiko seperti hipertensi, diabetes, hiperlipidemia, atau penyakit yang sudah ada) memerlukan deteksi dan penanganan dini di mana model pembelajaran mesin dapat sangat membantu. ")
+    st.write("###### Data Set Ini Adalah : Kidney Stone Prediction based on Urine Analysis (Prediksi Batu Ginjal Berdasarkan Analisis Urin) ")
+    st.write("###### Sumber Data Set dari Kaggle : https://www.kaggle.com/datasets/vuppalaadithyasairam/kidney-stone-prediction-based-on-urine-analysis")
+    st.write(" Dataset ini dapat digunakan untuk memprediksi adanya batu ginjal berdasarkan analisis urin. ")
+    st.write(" 79 spesimen urin, dianalisis dalam upaya untuk menentukan apakah karakteristik fisik urin tertentu mungkin terkait dengan pembentukan kristal kalsium oksalat. ")
     st.write("""# Deskripsi Data""")
-    st.write("Total datanya adalah 299 data pasien")
+    st.write("Total datanya adalah 79 data")
     st.write("Informasi Atribut")
-    st.write("1) Age : Umur dari pasien penyakit gagal jantung ")
-    st.write("2) Anemia : Menurunnya hemoglobin atau sel darah merah dalam tubuh (1 = Ya, 0 = Tidak) ")
-    st.write("3) High Blood Pressure : Hipertensi ")
-    st.write("4) Creatinine Phosphoki nase (CPK) : Enzim CPK dalam darah ")
-    st.write("5) Diabetes : Pasien menderita diabetes atau tidak (1 = Ya, 0 = Tidak) ")
-    st.write("6) Ejection Fraction : Volume darah yang mengalir meninggalkan jantung setiap jantung berkontraksi ")
-    st.write("7) Platelets : Jumlah trombosit dalam tubuh ")
-    st.write("8) Sex : Jenis Kelamin (1 = Laki-Laki, 0 = Perempuan ")
-    st.write("9) Serum Creatinine : Jumlah kreatinin serum yang terdapat pada darah ")
-    st.write("10) Serum Sodium : Jumlah natrium serum yang terdapat pada darah ")
-    st.write("11) Smoking : Perokok atau tidak perokok (1 = Ya, 0 = Tidak)")
-    st.write("12) Time : Periode tindak lanjut (6 hari)")
-    st.write("13) (Target) Death Event  : Pasien yang telah meninggal dalam masa tindak lanjut (1 = Gagal Jantung, 0 = Tidak Gagal jantung)")
-
-    st.write("###### Aplikasi ini untuk : Heart Failure Prediction (Prediksi Gagal Jantung) ")
+    st.write("1) gravity : berat jenis, densitas urin relatif terhadap air ")
+    st.write("2) ph : logaritma negatif dari ion hidrogen ")
+    st.write("3) osmo : osmolaritas (mOsm), satuan yang digunakan dalam biologi dan kedokteran tetapi tidak dalam kimia fisik. Osmolaritas sebanding dengan konsentrasi molekul dalam larutan ")
+    st.write("4) cond : konduktivitas (mMho miliMho). Satu Mho adalah satu timbal balik Ohm. Konduktivitas sebanding dengan konsentrasi muatan ion dalam larutan ")
+    st.write("5) urea : konsentrasi urea dalam milimol per liter ")
+    st.write("6) calc : kalsium konsentrasi (CALC) dalam milimol-liter ")
+    st.write("7) target : penentuan termasuk batu ginjal atau tidak ")
+    st.write ("0 = Tidak Adanya Batu Ginjal")
+    st.write ("1 = Adanya Batu Ginjal")
+    
+    st.write("###### Aplikasi ini untuk : Kidney Stone Prediction based on Urine Analysis (Prediksi Batu Ginjal Berdasarkan Analisis Urin) ")
     st.write("###### Source Code Aplikasi ada di Github anda bisa acces di link :https://github.com/FirdatulFitriyah/pendatweb  ")
 
 with upload_data:
@@ -63,13 +58,13 @@ with upload_data:
 
 with preporcessing:
     st.write("""# Preprocessing""")
-    df[["age","anaemia","creatinine_phosphokinase","diabetes","ejection_fraction","high_blood_pressure","platelets","serum_creatinine","serum_sodium","sex","smoking",	"time",	"DEATH_EVENT"]].agg(['min','max'])
+    df[["gravity",	"ph",	"osmo",	"cond",	"urea",	"calc",	"target"]].agg(['min','max'])
 
-    df.DEATH_EVENT.value_counts()
+    df.target.value_counts()
     #df = df.drop(columns=["date"])
 
-    X = df.drop(columns="DEATH_EVENT")
-    y = df.DEATH_EVENT
+    X = df.drop(columns="target")
+    y = df.target
     "### Membuang fitur yang tidak diperlukan"
     df
 
@@ -82,7 +77,7 @@ with preporcessing:
 
     le.inverse_transform(y)
 
-    labels = pd.get_dummies(df.DEATH_EVENT).columns.values.tolist()
+    labels = pd.get_dummies(df.target).columns.values.tolist()
 
     "### Label"
     labels
@@ -97,7 +92,7 @@ with preporcessing:
 
     le.inverse_transform(y)
 
-    labels = pd.get_dummies(df.DEATH_EVENT).columns.values.tolist()
+    labels = pd.get_dummies(df.target).columns.values.tolist()
     
     "### Label"
     labels
@@ -183,34 +178,22 @@ with modeling:
 
 with implementation:
     st.write("# Implementation")
-    age = st.number_input('Masukkan Umur : ')
-    anaemia = st.number_input('Masukkan nilai Anemia : ')
-    creatinine_phosphokinase = st.number_input('Masukkan nilai Enzim CPK dalam Darah : ')
-    diabetes = st.number_input('Masukkan nilai Diabetes : ')
-    ejection_fraction = st.number_input('Masukkan Nilai Fraksi Ejeksi : ')
-    high_blood_pressure = st.number_input('Masukkan nilai hipertensi  : ')
-    platelets = st.number_input('Masukkan Nilai Jumlah trombosit dalam tubuh : ')
-    serum_creatinine = st.number_input('Masukkan Nilai Jumlah Creatin Serum : ')
-    serum_sodium = st.number_input('Masukkan Nilai Jumlah Natrium Serum : ')
-    sex = st.number_input('Masukkan Jenis Kelamin : ')
-    smoking = st.number_input('Masukkan Smoking : ')
-    time = st.number_input('Masukkan Nilai Periode Tindak Lanjut : ')
-
+    gravity = st.number_input('Masukkan Berat Jenis Urin : ')
+    ph = st.number_input('Masukkan nilai Ph : ')
+    osmo = st.number_input('Masukkan nilai Enzim Osmolaritas Urine : ')
+    cond = st.number_input('Masukkan nilai Konduktivitas Urine : ')
+    urea = st.number_input('Masukkan Nilai Konsentrasi Ureum dalam Urin : ')
+    calc = st.number_input('Masukkan nilai Konsentrasi Kalsium dalam Urin : ')
+    
     def submit():
         # input
         inputs = np.array([[
-            age,
-            anaemia,
-            creatinine_phosphokinase,
-            diabetes,
-            ejection_fraction,
-            high_blood_pressure,
-            platelets,
-            serum_creatinine,
-            serum_sodium,
-            sex,
-            smoking,
-            time,
+            gravity,
+            ph,	
+            osmo,	
+            cond,	
+            urea,	
+            calc,	
             ]])
         le = joblib.load("le.save")
         model1 = joblib.load("knn.joblib")
