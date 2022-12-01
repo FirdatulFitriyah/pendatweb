@@ -62,7 +62,6 @@ with preporcessing:
     df[["gravity",	"ph",	"osmo",	"cond",	"urea",	"calc",	"target"]].agg(['min','max'])
 
     df.target.value_counts()
-    #df = df.drop(columns=["date"])
 
     X = df.drop(columns="target")
     y = df.target
