@@ -30,6 +30,7 @@ with data_set_description:
     st.write("""# Data Set Description """)
     st.write("###### Data Set Ini Adalah : Kidney Stone Prediction based on Urine Analysis (Prediksi Batu Ginjal Berdasarkan Analisis Urin) ")
     st.write("###### Sumber Data Set dari Kaggle : https://www.kaggle.com/datasets/vuppalaadithyasairam/kidney-stone-prediction-based-on-urine-analysis")
+    st.write(" Suatu endapan kecil dan keras yang terbentuk di ginjal dan sering menyakitkan saat buang air kecil. Batu ginjal adalah endapan keras yang terbuat dari mineral dan garam asam yang mengendap dalam urin yang terkonsentrasi. Batu ginjal ini dapat menyakitkan saat melewati saluran kemih, tetapi biasanya tidak menyebabkan kerusakan permanen. Gejala yang paling umum berupa nyeri parah, biasanya di sisi perut, yang sering disertai dengan mual. Perawatan meliputi pereda nyeri dan banyak minum air putih untuk membantu meluruhkan batu. Prosedur medis mungkin diperlukan untuk mengambil atau menghancurkan batu yang besar. ")
     st.write(" Dataset ini dapat digunakan untuk memprediksi adanya batu ginjal berdasarkan analisis urin. ")
     st.write(" 79 spesimen urin, dianalisis dalam upaya untuk menentukan apakah karakteristik fisik urin tertentu mungkin terkait dengan pembentukan kristal kalsium oksalat. ")
     st.write("""# Deskripsi Data""")
