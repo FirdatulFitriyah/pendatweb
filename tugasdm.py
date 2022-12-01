@@ -26,7 +26,7 @@ st.write("##### Nim   : 200411100020")
 st.write("##### Kelas : Penambangan Data C ")
 data_set_description, upload_data, preporcessing, modeling, implementation = st.tabs(["Data Set Description", "Upload Data", "Prepocessing", "Modeling", "Implementation"])
 
-with data_set_description:
+with description:
     st.write("""# Data Set Description """)
     st.write("###### Data Set Ini Adalah : Kidney Stone Prediction based on Urine Analysis (Prediksi Batu Ginjal Berdasarkan Analisis Urin) ")
     st.write("###### Sumber Data Set dari Kaggle : https://www.kaggle.com/datasets/vuppalaadithyasairam/kidney-stone-prediction-based-on-urine-analysis")
