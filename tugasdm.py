@@ -24,7 +24,7 @@ st.title("PENAMBANGAN DATA")
 st.write("##### Nama  : Firdatul Fitriyah ")
 st.write("##### Nim   : 200411100020")
 st.write("##### Kelas : Penambangan Data C ")
-data_set_description, upload_data, preporcessing, modeling, implementation = st.tabs(["Data Set Description", "Upload Data", "Prepocessing", "Modeling", "Implementation"])
+description, upload_data, preporcessing, modeling, implementation = st.tabs(["Description", "Upload Data", "Prepocessing", "Modeling", "Implementation"])
 
 with description:
     st.write("""# Data Set Description """)
