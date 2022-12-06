@@ -63,7 +63,7 @@ with preprocessing:
     - min = nilai minimum semua data asli
     - max = nilai maksimum semua data asli
     """)
-    df = df.drop(columns=["date"])
+    #df = df.drop(columns=["date"])
     #Mendefinisikan Varible X dan Y
     X = df.drop(columns=['target'])
     y = df['target'].values
