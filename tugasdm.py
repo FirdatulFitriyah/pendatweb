@@ -50,6 +50,7 @@ with upload_data:
     #     df = pd.read_csv(uploaded_file)
     #     st.write("Nama File Anda = ", uploaded_file.name)
     #     st.dataframe(df)
+    st.write("Dataset Asli")
     df = pd.read_csv('https://raw.githubusercontent.com/FirdatulFitriyah/pendatweb/main/kindey%20stone%20urine%20analysis.csv')
     st.dataframe(df)
 
