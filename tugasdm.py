@@ -174,20 +174,24 @@ with modeling:
 with implementation:
     with st.form("my_form"):
         st.subheader("Implementasi")
-        Precipitation = st.number_input('Masukkan preciptation (curah hujan) : ')
-        Temp_Max = st.number_input('Masukkan tempmax (suhu maks) : ')
-        Temp_Min = st.number_input('Masukkan tempmin (suhu min) : ')
-        Wind = st.number_input('Masukkan wind (angin) : ')
+        gravity = st.number_input('Masukkan Berat Jenis Urin : ')
+        ph = st.number_input('Masukkan nilai Ph : ')
+        osmo = st.number_input('Masukkan nilai Enzim Osmolaritas Urine : ')
+        cond = st.number_input('Masukkan nilai Konduktivitas Urine : ')
+        urea = st.number_input('Masukkan Nilai Konsentrasi Ureum dalam Urin : ')
+        calc = st.number_input('Masukkan nilai Konsentrasi Kalsium dalam Urin : ')
         model = st.selectbox('Pilihlah model yang akan anda gunakan untuk melakukan prediksi?',
                 ('Gaussian Naive Bayes', 'K-NN', 'Decision Tree'))
 
         prediksi = st.form_submit_button("Submit")
         if prediksi:
             inputs = np.array([
-                Precipitation,
-                Temp_Max,
-                Temp_Min,
-                Wind
+                gravity,
+                ph,	
+                osmo,	
+                cond,	
+                urea,	
+                calc,
             ])
 
             df_min = X.min()
